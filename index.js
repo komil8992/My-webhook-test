@@ -4,7 +4,11 @@ const { Pool } = require("pg");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "x-api-key"]
+}));
 app.use(express.json());
 
 const pool = new Pool({
